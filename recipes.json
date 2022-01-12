@@ -74,5 +74,54 @@
        },
        "recipe": "Combine oats and butter in the slow cooker and stir until oats are coated. Add water, brown sugar, cinnamon and salt. Cover and cook on low for 4 hours. Stir chopped apple into oatmeal, add milk and serve.",
        "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Tomato Soup": 
+    {
+       "tool": "Slow Cooker",
+       "calories": 200,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "6",
+       "prep_min": "10",
+       "cook_time_min": "480", 
+       "ingredients":
+       {
+            "flour":
+              {"cup": 0.33},
+            "crushed tomatoes":
+              {"28oz can": 1},
+            "tomato paste":
+              {"6oz can": 1},
+            "dried basil":
+              {"tablespoon": 1},
+            "dried oregano":
+              {"teaspoon": 1},
+            "salt":
+              {"teaspoon": 1},
+            "vegetable broth":
+              {"cup": 4},            
+            "bay leaf":
+              {"leaf": 1},
+            "oat milk":
+              {"cup": 1},
+            "unsalted butter":
+              {"tablespoon": 2},
+            "black pepper":
+              {"teaspoon": 1},
+            "vegan cheese":
+              {"cup": 0.66}
+       },
+       "recipe": "Combine flour, crushed tomatoes, tomato paste, basil, oregano and salt in slow cooker. Stir flour into tomatoes. Add broth and bay leaf. Cover and cook on low for 8 hours. Discard bay leaf. Stir in warm like and butter until melted.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
     }
 }

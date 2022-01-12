@@ -43,7 +43,7 @@ def setArgs():
     parser = argparse.ArgumentParser(description=__copyright__)
     parser.add_argument('-p', '--plan', required=False, action='store_true', help='Create a full meal plan (default 7 days)')
     parser.add_argument('--debug', required=False, action='store_true', help='Set the log level to DEBUG')
-    #parser.add_argument('-b', '--breakfast', required=False, action='store_true', help='Only generate breakfast')
+    parser.add_argument('--update', required=False, action='store_true', help='Update the recipe list.') # This will overwrite!
     #parser.add_argument('-l', '--lunch', required=False, action='store_true', help='Only generate lunch')
     #parser.add_argument('-d', '--dinner', required=False, action='store_true', help='Only generate dinner')
 
@@ -165,6 +165,10 @@ def main():
     args = setArgs()
     setLogging(args.debug)
     print(f"{__software__} v{__version__}")
+    if args.update:
+        logging.info("Updating recipes")
+        downloadNewRecipes(Path(f"{CONFDIR}/{RECIPELIST}"))
+        exit()
     settingsInit()
     if args.plan:
         getPlan()
