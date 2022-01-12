@@ -1,0 +1,78 @@
+{
+    "Blueberry-Coconut Quinoa": 
+    {
+       "tool": "Slow Cooker",
+       "calories": 468,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "True",
+            "no_oil": "False"
+          },
+       "meal":
+       {
+           "breakfast": "True",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "4",
+       "prep_min": "10",
+       "cook_time_min": "180", 
+       "ingredients":
+       {
+           "quinoa":
+              {"cup": 0.75},
+           "shredded unsweetended coconut":
+              {"cup": 0.25},
+           "honey":
+              {"tablespoon": 1},
+           "coconut milk":
+              {"can 13.5oz": 1},
+           "blueberries":
+              {"cup": 2}
+       },
+       "recipe": "Put rinsed quinoa in the slow cooker. Add coconut and honey and coconut milk. Stir until smooth and even. Cover and cook on low 3 hours. Top with blueberries and serve.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Apple-Cinnamon Oatmeal": 
+    {
+       "tool": "Slow Cooker",
+       "calories": 143,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "True",
+           "lunch": "True",
+           "dinner": "False"
+       },
+       "servings": "4",
+       "prep_min": "10",
+       "cook_time_min": "240", 
+       "ingredients":
+       {
+           "steel-cut oats":
+              {"cup": 1},
+           "unsalted butter":
+              {"tablespoon": 1},
+           "water":
+              {"cup": 4},
+           "brown sugar":
+              {"cup": 0.25},
+           "ground cinnamon":
+              {"teaspoon": 1},
+           "salt":
+              {"teaspoon": 0.5},
+           "Granny Smith apple":
+              {"apple": 1},
+           "oat milk":
+              {"cup": 0.5}
+       },
+       "recipe": "Combine oats and butter in the slow cooker and stir until oats are coated. Add water, brown sugar, cinnamon and salt. Cover and cook on low for 4 hours. Stir chopped apple into oatmeal, add milk and serve.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    }
+}
