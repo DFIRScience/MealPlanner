@@ -1,18 +1,15 @@
 [X] Read settings - meals to plan, meal times, email address
-[] Generate meal list based on settings
-[] Store recipes in JSON
-[] Choose random meal
-  [] Check if recipe has a mealtime flag
-  [] If yes, continue, if no select again
-  [] Loop for X days
+[X] Generate meal list based on settings
+[X] Store recipes in JSON
+[X] Choose random meal
+[X] Check if recipe has a mealtime flag
 [] Add a meal
 [] Delete a meal
 [] Specify meal type
 [] Filter meal by meat, vegeterian, vegan, low sodium, oil free, etc.
 [] Mark meal as 'do not recommend' until
 [] Check if settings and recipe list is well-formatted
-[] Present meal plan to user
-    [] Confirm meal plan
+[] Present meal plan to user - confirm
 [] Output meal plan to a file
 [] Email grocery list to configured email address / file
 [] Email recipe by date/time
