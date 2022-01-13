@@ -1,7 +1,7 @@
 {
     "Blueberry-Coconut Quinoa": 
     {
-       "tool": "Slow Cooker",
+       "tool": {"Slow Cooker": "True"},
        "calories": 468,
        "tags":
           { "vegan": "True",
@@ -36,7 +36,7 @@
     },
     "Apple-Cinnamon Oatmeal": 
     {
-       "tool": "Slow Cooker",
+       "tool": {"Slow Cooker": "True"},
        "calories": 143,
        "tags":
           { "vegan": "True",
@@ -77,7 +77,7 @@
     },
     "Tomato Soup": 
     {
-       "tool": "Slow Cooker",
+       "tool": {"Slow Cooker": "True"},
        "calories": 200,
        "tags":
           { "vegan": "True",
@@ -121,12 +121,12 @@
             "vegan cheese":
               {"cup": 0.66}
        },
-       "recipe": "Combine flour, crushed tomatoes, tomato paste, basil, oregano and salt in slow cooker. Stir flour into tomatoes. Add broth and bay leaf. Cover and cook on low for 8 hours. Discard bay leaf. Stir in warm like and butter until melted.",
+       "recipe": "Stir flour and crushed tomatoes in slow cooker. Combine tomato paste, basil, oregano and salt in slow cooker. Add broth and bay leaf. Cover and cook on low for 8 hours. Discard bay leaf. Stir in warm like and butter until melted.",
        "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
     },
     "Baked Japanese Sweet Potato": 
     {
-       "tool": "Oven",
+       "tool": {"Oven": "True"},
        "calories": 200,
        "tags":
           { "vegan": "True",
@@ -150,5 +150,328 @@
        },
        "recipe": "Pre-heat oven to 430 degrees F. Put whole potato in middle rack. Cook for 60 min.",
        "reference": ""
+    },
+    "Black Bean Soup": 
+    {
+       "tool": {"Slow Cooker": "True"},
+       "calories": 237,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "6",
+       "prep_min": "10",
+       "cook_time_min": "480", 
+       "ingredients":
+       {
+            "dried black beans":
+              {"oz": 8},
+            "water":
+              {"cup": 3.5},
+            "bay leaf":
+               {"leaf": 1},
+            "oregano":
+               {"teaspoon": 1},
+            "ground cumin":
+               {"teaspoon": 1},
+            "garlic powder":
+               {"teaspoon": 1},
+            "salt":
+               {"teaspoon": 1},
+            "lime juice":
+               {"tablespoon": 2},
+            "tomato sauce":
+               {"8oz can": 1},
+            "black pepper":
+               {"teaspoon": 1}
+       },
+       "recipe": "Combine black beans, water, bay leaf, oregano, cumin, garlic powder and salt in slow cooker. Cover and cook on low 8 hours. Discard bay leaf. Stir in lime juice and tomato sauce.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Mexican Corn Chowder": 
+    {
+       "tool": {"Slow Cooker": "True"},
+       "calories": 250,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "6",
+       "prep_min": "15",
+       "cook_time_min": "480", 
+       "ingredients":
+       {
+            "frozen corn kernels":
+              {"oz": 16},
+            "salt":
+              {"teaspoon": 1},
+            "black pepper":
+              {"teaspoon": 0.5},
+            "ground cumin":
+              {"teaspoon": 0.5},
+            "vegetable broth":
+              {"cup": 4},
+            "picante sauce":
+               {"cup": 0.5},
+            "medium russet potatoes":
+               {"potato": 4},
+            "garlic powder":
+               {"teaspoon": 1},
+            "lime juice":
+               {"tablespoon": 3}
+       },
+       "recipe": "Combine corn, salt, pepper, cumin, broth and picante sauce in the slow cooker. Submergepotatoes in the liquid. Cover and cook for 8 hours. Smash 2 potatoes and add back to cooker. Cube two potatoes and add to cooker with lime juice.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Broccoli Cheddar Soup": 
+    {
+       "tool": {"Slow Cooker": "True", "blender": "True"},
+       "calories": 194,
+       "tags":
+          { "vegan": "False",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "5",
+       "prep_min": "10",
+       "cook_time_min": "480", 
+       "ingredients":
+       {
+            "vegetable broth":
+              {"cups": 2},
+            "yukon gold potatoes":
+              {"lb": 1},
+            "medium yellow onion":
+              {"onion": 1},
+            "scallions":
+              {"scallion": 2},
+            "garlic powder":
+              {"teaspoon": 1},
+            "ground thyme":
+               {"teaspoon": 0.25},
+            "salt":
+               {"teaspoon": 1},
+            "black pepper":
+               {"teaspoon": 1},
+            "frozen broccoli florets":
+               {"lb": 1},
+            "shredded extra-sharp Chedar cheese":
+               {"cup": 0.5},
+            "oat milk":
+               {"cup": 0.5},
+            "unsalted butter":
+               {"tablespoon": 1}
+       },
+       "recipe": "Combine broth, potatoes, onion, scallions, garlic powder and thyme in slow cooker. Season w/ salt and pepper. Cover and cook for 8 hours. Puree in blender. Add broccoli and pulse blender to desired consistency. Return to slow cooker. Add cheddar, milk, butter, broccoli and stir. Cook a few more minutes and serve.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Vegan Chili": 
+    {
+       "tool": {"Slow Cooker": "True"},
+       "calories": 324,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "6",
+       "prep_min": "15",
+       "cook_time_min": "480", 
+       "ingredients":
+       {
+            "kidney beans":
+              {"15oz can": 2},
+            "diced tomatoes":
+              {"14.5oz can": 1},
+            "hot chunky salsa":
+              {"16oz jar": 1},
+            "Japanese sweet potato":
+              {"potato": 1},
+            "onion":
+              {"onion": 1},
+            "water":
+              {"cup": 0.5},
+            "tomato paste":
+               {"tablespoon": 2},
+            "salt":
+               {"teaspoon": 1},
+            "black pepper":
+               {"teaspoon": 1},
+            "garlic powder":
+               {"teaspoon": 1},
+            "ground cumin":
+               {"teaspoon": 1},
+            "chili poweder":
+               {"teaspoon": 1}
+       },
+       "recipe": "Cube potato and dice onion. Combine all ingredients in the slow cooker and stir to combine. Cover and cook on low for 8 hours.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Mexican Beans and Rice": 
+    {
+       "tool": {"Slow Cooker": "True"},
+       "calories": 262,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "4",
+       "prep_min": "5",
+       "cook_time_min": "180", 
+       "ingredients":
+       {
+            "black beans":
+              {"15oz can": 1},
+            "long-grain brown rice":
+              {"cup": 0.75},
+            "water":
+              {"cup": 1.5},
+            "hot chunky salsa":
+              {"cup": 0.75},
+            "bay leaf":
+              {"leaf": 1},
+            "ground cumin":
+               {"teaspoon": 1},
+            "salt":
+               {"teaspoon": 0.5},
+            "garlic poweder":
+               {"teaspoon": 0.5},
+            "corn":
+               {"15oz can": 1},
+            "lime juice":
+               {"tablespoon": 2}
+       },
+       "recipe": "Combine beans, rice, water, salsa, bay leaf, cumin, garlic powder, and salt in slow cooker. Cover and cook on low for 3 hours. Add corn (drained) with 10 minutes left to cook. Discard bay leaf and add the lime juice.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Lentil and Bean Salad": 
+    {
+       "tool": {"Slow Cooker": "True"},
+       "calories": 613,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "2",
+       "prep_min": "10",
+       "cook_time_min": "240", 
+       "ingredients":
+       {
+            "vegetable broth":
+              {"cups": 2},
+            "yukon gold potatoes":
+              {"lb": 1},
+            "medium yellow onion":
+              {"onion": 1},
+            "scallions":
+              {"scallion": 2},
+            "garlic poweder":
+              {"teaspoon": 1},
+            "ground thyme":
+               {"teaspoon": 0.25},
+            "salt":
+               {"teaspoon": 1},
+            "black pepper":
+               {"teaspoon": 1},
+            "frozen broccoli florets":
+               {"lb": 1},
+            "shredded extra-sharp Chedar cheese":
+               {"cup": 0.5},
+            "oat milk":
+               {"cup": 0.5},
+            "unsalted butter":
+               {"tablespoon": 1}
+       },
+       "recipe": "Combine broth, potatoes, onion, scallions, garlic powder and thyme in slow cooker. Season w/ salt and pepper. Cover and cook for 8 hours. Puree in blender. Add broccoli and pulse blender to desired consistency. Return to slow cooker. Add cheddar, milk, butter, broccoli and stir. Cook a few more minutes and serve.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Ratatouille": 
+    {
+       "tool": {"Slow Cooker": "True"},
+       "calories": 135,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "False",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "4",
+       "prep_min": "15",
+       "cook_time_min": "300", 
+       "ingredients":
+       {
+            "medium yellow onion":
+              {"onion": 1},
+            "tomato paste":
+              {"tablespoon": 1},
+            "garlic poweder":
+              {"teaspoon": 1},
+            "dried basil":
+               {"teaspoon": 1},
+            "salt":
+               {"teaspoon": 0.25},
+            "eggplant":
+               {"oz": 8},
+            "zucchini":
+               {"oz": 8},
+            "bell pepper":
+               {"bell pepper": 1},
+            "black pepper":
+               {"teaspoon": 0.5}
+       },
+       "recipe": "Dice onion and zucchini. Slice eggplant and bell pepper. Combine onion, tomato paste, garlic powder, basil, salt, eggplant, zucchini and bell peper in slow cooker and stir. Cover and cook on low for 5 hours.",
+       "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
     }
 }
