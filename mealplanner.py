@@ -132,6 +132,7 @@ def getRecipeList(recipes, meal):
     global GROCERYLIST
     ingredents = recipes[meal]["ingredients"]
     for i in ingredents:
+        logging.debug(f"processing ingredent {i}")
         if i not in GROCERYLIST:
             logging.debug(f"Adding {i} to grocerylist")
             GROCERYLIST.update({i:ingredents[i]})
@@ -171,13 +172,14 @@ def getPlan():
         }
     }
 
+    # This looks like it could be a function...
     for n in range(SETTINGS['plan_days']):
         td = PLANDATE + timedelta(n)
         td2 = timedelta(hours=SETTINGS['duration_hr'])
         print(f'++++ {td.strftime("%Y-%m-%d")} Mealplan ++++')
         if numb != 0:
             b = mealplan[f'breakfast{n}']
-            event['summary'] = b
+            event['summary'] = list(recipes[mealplan[f'breakfast{n}']]["tool"])[0] + " | " + b
             event['description'] = recipes[mealplan[f'breakfast{n}']]["recipe"]
             event['start']['dateTime'] = td.strftime("%Y-%m-%d") + "T" + SETTINGS['time_breakfast'] + ":00"
             event['start']['timeZone'] = calendar['timeZone']
@@ -189,7 +191,7 @@ def getPlan():
             getRecipeList(recipes, mealplan[f'breakfast{n}'])
         if numl != 0:
             l = mealplan[f'lunch{n}']
-            event['summary'] = l
+            event['summary'] = list(recipes[mealplan[f'lunch{n}']]["tool"])[0] + " | " + l
             event['description'] = recipes[mealplan[f'lunch{n}']]["recipe"]
             event['start']['dateTime'] = td.strftime("%Y-%m-%d") + "T" + SETTINGS['time_lunch'] + ":00"
             event['start']['timeZone'] = calendar['timeZone']
@@ -202,7 +204,7 @@ def getPlan():
         if numd != 0:
             d = mealplan[f'dinner{n}']
             print(d)
-            event['summary'] = d
+            event['summary'] = list(recipes[mealplan[f'dinner{n}']]["tool"])[0] + " | " + d
             event['description'] = recipes[mealplan[f'dinner{n}']]["recipe"]
             event['start']['dateTime'] = td.strftime("%Y-%m-%d") + "T" + SETTINGS['time_dinner'] + ":00"
             event['start']['timeZone'] = calendar['timeZone']

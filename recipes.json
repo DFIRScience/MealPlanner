@@ -101,7 +101,7 @@
             "crushed tomatoes":
               {"28oz can": 1},
             "tomato paste":
-              {"6oz can": 1},
+              {"tablespoon": 9.6},
             "dried basil":
               {"tablespoon": 1},
             "dried oregano":
@@ -261,7 +261,7 @@
        "ingredients":
        {
             "vegetable broth":
-              {"cups": 2},
+              {"cup": 2},
             "yukon gold potatoes":
               {"lb": 1},
             "medium yellow onion":
@@ -404,7 +404,7 @@
        "ingredients":
        {
             "vegetable broth":
-              {"cups": 2},
+              {"cup": 2},
             "yukon gold potatoes":
               {"lb": 1},
             "medium yellow onion":
