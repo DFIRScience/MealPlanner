@@ -123,5 +123,32 @@
        },
        "recipe": "Combine flour, crushed tomatoes, tomato paste, basil, oregano and salt in slow cooker. Stir flour into tomatoes. Add broth and bay leaf. Cover and cook on low for 8 hours. Discard bay leaf. Stir in warm like and butter until melted.",
        "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Baked Japanese Sweet Potato": 
+    {
+       "tool": "Oven",
+       "calories": 200,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "True",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "1",
+       "prep_min": "5",
+       "cook_time_min": "60", 
+       "ingredients":
+       {
+            "japanese sweet potato":
+              {"large": 1}
+       },
+       "recipe": "Pre-heat oven to 430 degrees F. Put whole potato in middle rack. Cook for 60 min.",
+       "reference": ""
     }
 }

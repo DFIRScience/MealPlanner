@@ -13,17 +13,26 @@ from json import dumps, loads
 from random import choice
 from wget import download
 from pathlib import Path
+from datetime import date, timedelta, datetime
+
+# Calendar integration
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 __software__ = 'MealPlanner'
 __author__ = 'Joshua James'
 __copyright__ = 'Copyright 2022, MealPlanner'
 __credits__ = []
 __license__ = 'MIT'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 __maintainer__ = 'Joshua James'
 __email__ = 'joshua+github@dfirscience.org'
 __status__ = 'active'
 
+SCOPES = ['https://www.googleapis.com/auth/calendar']
 # Set config location & name
 CONFFILE = "mealplanner.conf"
 RECIPELIST = "recipes.json"
@@ -31,12 +40,14 @@ CONFDIR = Path(f"{Path.home()}/.mealplanner")
 CONFIG = Path(f"{CONFDIR}/{CONFFILE}")
 SETTINGS = None
 GROCERYLIST = {}
+PLANDATE = date.today()
 
 # Set logging level and format
 def setLogging(debug):
     fmt = "[%(levelname)s] %(asctime)s %(message)s"
     LOGLEVEL = logging.INFO if debug is False else logging.DEBUG
     logging.basicConfig(level=LOGLEVEL, format=fmt, datefmt='%Y-%M-%dT%H:%M:%S')
+    logging.getLogger("googleapiclient").setLevel(logging.WARNING)
 
 # Argparser config and argument setup
 def setArgs():
@@ -44,8 +55,8 @@ def setArgs():
     parser.add_argument('-p', '--plan', required=False, action='store_true', help='Create a full meal plan (default 7 days)')
     parser.add_argument('--debug', required=False, action='store_true', help='Set the log level to DEBUG')
     parser.add_argument('--update', required=False, action='store_true', help='Update the recipe list.') # This will overwrite!
-    #parser.add_argument('-l', '--lunch', required=False, action='store_true', help='Only generate lunch')
-    #parser.add_argument('-d', '--dinner', required=False, action='store_true', help='Only generate dinner')
+    parser.add_argument('-d', '--date', required=False, action='store', help='Date the plan begins (YYYY-MM-DD)')
+    parser.add_argument('--googleauth', required=False, action='store_true', help='Authenticate to Google Calendar')
 
     return(parser.parse_args())
 
@@ -77,6 +88,7 @@ def readConfig():
 def downloadNewRecipes(RECIPEPATH):
     master = "https://raw.githubusercontent.com/DFIRScience/MealPlanner/main/recipes.json"
     try:
+        RECIPEPATH.replace(f"{RECIPEPATH}.old") # This could lead to no recipes if download fails
         download(master, str(RECIPEPATH))
         print()
     except Exception as e:
@@ -130,6 +142,7 @@ def getRecipeList(recipes, meal):
 
 # Main meal plan generator function
 def getPlan():
+    global PLANDATE
     recipes = getRecipes()
     logging.info(f"Generating meal plans for {SETTINGS['plan_days']} days")
     numb, numl, numd = getNumMealTypes(SETTINGS['plan_days']) # get b, l, d to filter
@@ -142,17 +155,62 @@ def getPlan():
     for n in range(numd):
        mealplan[f'dinner{n}'] = getMeal('dinner', recipes)
 
+    creds = authGoogleCalendar()
+    calendar = getGoogleCalendar(creds)
+
+    event = {
+        'summary': '',
+        'description': '',
+        'start': {
+            'dateTime': '',
+            'timeZone': '',
+        },
+        'end': {
+            'dateTime': '',
+            'timeZone': '',
+        }
+    }
+
     for n in range(SETTINGS['plan_days']):
-        print(f'++++ Mealplan day {n+1} ++++')
+        td = PLANDATE + timedelta(n)
+        td2 = timedelta(hours=SETTINGS['duration_hr'])
+        print(f'++++ {td.strftime("%Y-%m-%d")} Mealplan ++++')
         if numb != 0:
-            print(mealplan[f'breakfast{n}'])
+            b = mealplan[f'breakfast{n}']
+            event['summary'] = b
+            event['description'] = recipes[mealplan[f'breakfast{n}']]["recipe"]
+            event['start']['dateTime'] = td.strftime("%Y-%m-%d") + "T" + SETTINGS['time_breakfast'] + ":00"
+            event['start']['timeZone'] = calendar['timeZone']
+            event['end']['dateTime'] = (datetime.strptime(event['start']['dateTime'], '%Y-%m-%dT%H:%M:%S') + td2).isoformat()
+            event['end']['timeZone'] = calendar['timeZone']
+            logging.debug(event)
+            print(b)
+            if creds.valid: addToGoogleCalendar(creds, calendar, event)
             getRecipeList(recipes, mealplan[f'breakfast{n}'])
         if numl != 0:
-            print(mealplan[f'lunch{n}'])
+            l = mealplan[f'lunch{n}']
+            event['summary'] = l
+            event['description'] = recipes[mealplan[f'lunch{n}']]["recipe"]
+            event['start']['dateTime'] = td.strftime("%Y-%m-%d") + "T" + SETTINGS['time_lunch'] + ":00"
+            event['start']['timeZone'] = calendar['timeZone']
+            event['end']['dateTime'] = (datetime.strptime(event['start']['dateTime'], '%Y-%m-%dT%H:%M:%S') + td2).isoformat()
+            event['end']['timeZone'] = calendar['timeZone']
+            logging.debug(event)
+            print(l)
+            if creds.valid: addToGoogleCalendar(creds, calendar, event)
             getRecipeList(recipes, mealplan[f'lunch{n}'])
         if numd != 0:
-            print(mealplan[f'dinner{n}'])
-            getRecipeList(recipes, mealplan[f'lunch{n}'])
+            d = mealplan[f'dinner{n}']
+            print(d)
+            event['summary'] = d
+            event['description'] = recipes[mealplan[f'dinner{n}']]["recipe"]
+            event['start']['dateTime'] = td.strftime("%Y-%m-%d") + "T" + SETTINGS['time_dinner'] + ":00"
+            event['start']['timeZone'] = calendar['timeZone']
+            event['end']['dateTime'] = (datetime.strptime(event['start']['dateTime'], '%Y-%m-%dT%H:%M:%S') + td2).isoformat()
+            event['end']['timeZone'] = calendar['timeZone']
+            logging.debug(event)
+            if creds.valid: addToGoogleCalendar(creds, calendar, event)
+            getRecipeList(recipes, mealplan[f'dinner{n}'])
 
 def getGroceryList():
     print("")
@@ -161,19 +219,70 @@ def getGroceryList():
         for measurement in GROCERYLIST[item]:
             print(f"{item.capitalize()}: {GROCERYLIST[item][measurement]} {measurement}")
 
+def authGoogleCalendar():
+    global SCOPES
+    creds = None
+    TOKENPATH = Path(f"{CONFDIR}/caltoken.json")
+    CREDSPATH = Path(f"{CONFDIR}/credentials.json")
+    if TOKENPATH.exists():
+        creds = Credentials.from_authorized_user_file(TOKENPATH, SCOPES)
+        logging.debug("Prior Google auth token found")
+    if not creds or not creds.valid:
+        logging.debug("Credentials expired. Refreshing...")
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            flow = InstalledAppFlow.from_client_secrets_file(
+                CREDSPATH, SCOPES)
+            creds = flow.run_local_server(port=0)
+        TOKENPATH.write_text(creds.to_json())
+    return creds
+
+def getGoogleCalendar(creds):
+    logging.debug("Getting meal plan calendar ID")
+    calID = None
+    try:
+        service = build('calendar', 'v3', credentials=creds)
+        pageToken = None
+        # Get the Meal Plan calendar ID - TODO - create if not found
+        while True:
+            calendarList = service.calendarList().list(pageToken=pageToken).execute()
+            for calendarListEntry in calendarList['items']:
+                if calendarListEntry["summary"] == "Meal Plan":
+                    calID = calendarListEntry["id"]
+                    break
+            page_token = calendarList.get('nextPageToken')
+            if not page_token:
+               break
+        calendar = service.calendars().get(calendarId=calID).execute()
+        return calendar
+
+    except HttpError as error:
+        logging.debug(f'An error occurred: {error}')
+
+def addToGoogleCalendar(creds, calendar, event):
+    try:
+        service = build('calendar', 'v3', credentials=creds)
+        event = service.events().insert(calendarId=calendar['id'], body=event).execute()
+    except HttpError as error:
+        logging.debug(f'An error occurred: {error}')
+
 def main():
+    global PLANDATE
     args = setArgs()
     setLogging(args.debug)
     print(f"{__software__} v{__version__}")
+    if args.googleauth: authGoogleCalendar()
     if args.update:
         logging.info("Updating recipes")
         downloadNewRecipes(Path(f"{CONFDIR}/{RECIPELIST}"))
         exit()
     settingsInit()
+    if args.date: PLANDATE = datetime.strptime(args.date, '%Y-%m-%d')
+    logging.debug(f'Plan start date set to {PLANDATE}')
     if args.plan:
         getPlan()
         getGroceryList()
-
 
 if __name__ == '__main__':
     main()
