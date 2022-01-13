@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Calendar title updated with cook type
 
+### Fixed
+- Recipe ingredents must be in same measurement (fixed resipes.json - need to fix function)
+
 ## [0.1.1] - 2022-01-12
 ### Added
 - Set plan start date
