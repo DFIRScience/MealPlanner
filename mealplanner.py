@@ -119,10 +119,14 @@ def getNumMealTypes(days):
     return b, l, d
 
 # Randomly choose a meal and check if it matches filters
-def getMeal(mealtype, recipes):
+def getMeal(mealtype, recipes, mealplan):
     meal, recipe = choice(list(recipes.items()))
+    logging.debug(f"Meal selected {meal} for mealplan {mealplan}.values()") # This will cause an inf loop of not enough recipes.
+    if meal in mealplan.values():
+        logging.debug(f"Meal {meal} already listed in mealplan!")
+        return getMeal(mealtype, recipes, mealplan)
     if recipe["meal"][mealtype] != "True":
-        return getMeal(mealtype, recipes)
+        return getMeal(mealtype, recipes, mealplan)
     else:
         return(meal)
 
@@ -148,13 +152,16 @@ def getPlan():
     logging.info(f"Generating meal plans for {SETTINGS['plan_days']} days")
     numb, numl, numd = getNumMealTypes(SETTINGS['plan_days']) # get b, l, d to filter
     logging.info(f"{numb} breakfasts, {numl} lunches, {numd} dinners")
+    if not len(recipes) >= numb + numl + numd:
+        logging.info(f"There are not enough recipes to fill your mealplan. Add more recipes or reduce the meals/days.")
+        exit(1)
     mealplan = {}
     for n in range(numb):
-       mealplan[f'breakfast{n}'] = getMeal('breakfast', recipes)
+       mealplan[f'breakfast{n}'] = getMeal('breakfast', recipes, mealplan)
     for n in range(numl):
-       mealplan[f'lunch{n}'] = getMeal('lunch', recipes)
+       mealplan[f'lunch{n}'] = getMeal('lunch', recipes, mealplan)
     for n in range(numd):
-       mealplan[f'dinner{n}'] = getMeal('dinner', recipes)
+       mealplan[f'dinner{n}'] = getMeal('dinner', recipes, mealplan)
 
     creds = authGoogleCalendar()
     calendar = getGoogleCalendar(creds)
