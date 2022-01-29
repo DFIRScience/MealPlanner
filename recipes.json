@@ -473,5 +473,64 @@
        },
        "recipe": "Dice onion and zucchini. Slice eggplant and bell pepper. Combine onion, tomato paste, garlic powder, basil, salt, eggplant, zucchini and bell peper in slow cooker and stir. Cover and cook on low for 5 hours.",
        "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
+    },
+    "Three-Bean Chiki": 
+    {
+       "tool": {"Slow Cooker": "True"},
+       "calories": 0,
+       "tags":
+          { "vegan": "True",
+            "vegetarian": "True",
+            "low_sodium": "True",
+            "no_oil": "True"
+          },
+       "meal":
+       {
+           "breakfast": "False",
+           "lunch": "True",
+           "dinner": "True"
+       },
+       "servings": "4",
+       "prep_min": "15",
+       "cook_time_min": "480", 
+       "ingredients":
+       {
+            "vegetable broth":
+              {"cup": 2},
+            "tomato paste":
+              {"tablespoon": 9.6},
+            "red onion":
+              {"onlion": 1},
+            "bell pepper":
+               {"bell pepper": 1},
+            "garlic":
+               {"clove": 2},
+            "hot chili pepper":
+               {"pepper": 1},
+            "mushrooms":
+               {"cup": 3},
+            "chili powder":
+               {"tablespoon": 2},
+            "diced tomatoes":
+               {"15oz can": 1},
+            "red lentils":
+               {"cup": 0.5},
+            "kidney beans":
+               {"15oz can": 1},
+            "black beans":
+               {"15oz can": 1},
+            "umami sauce":
+               {"tablespoon": 2},
+            "turmeric": 
+               {"teaspoon": 0.25},
+            "savory spice blend":
+               {"tablespoon": 1},
+            "smoked paprika":
+               {"teaspoon": 0.5},
+            "black pepper":
+               {"teaspoon": 0.25}
+       },
+       "recipe": "Combine all ingredents into the slow cooker. Cook on low for 8 hours or until lentils are soft.",
+       "reference": "How Not To Die Cookbook (https://amzn.to/3g5W5iE)"
     }
 }
