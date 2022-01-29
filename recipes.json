@@ -332,7 +332,7 @@
             "ground cumin":
                {"teaspoon": 1},
             "chili powder":
-               {"teaspoon": 1}
+               {"tablespoon": 0.33}
        },
        "recipe": "Cube potato and dice onion. Combine all ingredients in the slow cooker and stir to combine. Cover and cook on low for 8 hours.",
        "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
@@ -474,7 +474,7 @@
        "recipe": "Dice onion and zucchini. Slice eggplant and bell pepper. Combine onion, tomato paste, garlic powder, basil, salt, eggplant, zucchini and bell peper in slow cooker and stir. Cover and cook on low for 5 hours.",
        "reference": "The Easy 5-Ingredient Slow Cooker Cookbook: 100 Delicious No-Fuss Meals for Busy People (https://amzn.to/3I0lTIQ)"
     },
-    "Three-Bean Chiki": 
+    "Three-Bean Chili": 
     {
        "tool": {"Slow Cooker": "True"},
        "calories": 0,
